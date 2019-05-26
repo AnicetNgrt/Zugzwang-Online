@@ -8,11 +8,11 @@ var app = express();
 
 var server = require('http').Server(app);
 
-var io = require('socket.io')(server);
+var io = require('socket.io').listen(server);
 
 var Storage = require('node-storage');
  
-var store = new Storage('storage');
+var store = new Storage('../storage');
 
 require('dotenv').config();
 
@@ -22,7 +22,7 @@ var smtpTransport = require('nodemailer-smtp-transport');
 const googlepassword = process.env.GOOGLEPASSWORD;
 
 
-server.listen(3512, "127.0.0.1");
+server.listen(3512);
 
 var players = {};
 
